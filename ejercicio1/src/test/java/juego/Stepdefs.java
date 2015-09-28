@@ -15,6 +15,11 @@ public class Stepdefs {
         jugadorUno = new Jugador(Elemento.PIEDRA);
     }
 
+    @When("^jugadorDos juega PIEDRA$")
+    public void jugadorDos_juega_piedra() {
+        jugadorDos = new Jugador(Elemento.PIEDRA);
+    }
+
     @When("^jugadorDos juega PAPEL$")
     public void jugadorDos_juega_papel() {
         jugadorDos = new Jugador(Elemento.PAPEL);
@@ -33,6 +38,11 @@ public class Stepdefs {
     @Then("^gana jugadorUno$")
     public void gana_jugadorUno() {
         Assert.assertEquals(Resultado.GANA, jugadorUno.juegaContra(jugadorDos));
+    }
+
+    @Then("^hay empate$")
+    public void hay_empate() {
+        Assert.assertEquals(Resultado.EMPATE, jugadorUno.juegaContra(jugadorDos));
     }
 
 }

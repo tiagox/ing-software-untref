@@ -9,7 +9,9 @@ public class Jugador {
     }
 
     public Resultado juegaContra(Jugador otro){
-        if (otro.elemento == Elemento.PAPEL) {
+        if (otro.elemento == Elemento.PIEDRA) {
+            return Resultado.EMPATE;
+        } else if (otro.elemento == Elemento.PAPEL) {
             return Resultado.PIERDE;
         } else {
             return Resultado.GANA;

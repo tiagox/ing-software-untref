@@ -1,5 +1,5 @@
 package juego;
 
 public enum Resultado {
-    GANA, PIERDE
+    GANA, PIERDE, EMPATE
 }
