@@ -11,6 +11,8 @@ public class Jugador {
     public Resultado juegaContra(Jugador otro){
         if (elemento == Elemento.PAPEL && otro.elemento == Elemento.PIEDRA)
             return Resultado.GANA;
+        if (elemento == Elemento.PAPEL && otro.elemento == Elemento.TIJERA)
+            return Resultado.PIERDE;
         if (otro.elemento == Elemento.PIEDRA)
             return Resultado.EMPATE;
         if (otro.elemento == Elemento.PAPEL)
