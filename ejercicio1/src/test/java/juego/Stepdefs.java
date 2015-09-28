@@ -15,6 +15,11 @@ public class Stepdefs {
         jugadorUno = new Jugador(Elemento.PIEDRA);
     }
 
+    @Given("^jugadorUno juega PAPEL$")
+    public void jugadorUno_juega_papel() {
+        jugadorUno = new Jugador(Elemento.PAPEL);
+    }
+
     @When("^jugadorDos juega PIEDRA$")
     public void jugadorDos_juega_piedra() {
         jugadorDos = new Jugador(Elemento.PIEDRA);
@@ -26,7 +31,7 @@ public class Stepdefs {
     }
 
     @When("^jugadorDos juega TIJERA$")
-    public void jugadordos_juega_tijera() {
+    public void jugadorDos_juega_tijera() {
         jugadorDos = new Jugador(Elemento.TIJERA);
     }
 
