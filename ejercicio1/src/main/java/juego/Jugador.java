@@ -9,18 +9,23 @@ public class Jugador {
     }
 
     public Resultado juegaContra(Jugador otro){
+
+        if (elemento == Elemento.PIEDRA && otro.elemento == Elemento.PIEDRA)
+            return Resultado.EMPATE;
+        if (elemento == Elemento.PIEDRA && otro.elemento == Elemento.PAPEL)
+            return Resultado.PIERDE;
+        if (elemento == Elemento.PIEDRA && otro.elemento == Elemento.TIJERA)
+            return Resultado.GANA;
+
         if (elemento == Elemento.PAPEL && otro.elemento == Elemento.PIEDRA)
             return Resultado.GANA;
         if (elemento == Elemento.PAPEL && otro.elemento == Elemento.PAPEL)
             return Resultado.EMPATE;
         if (elemento == Elemento.PAPEL && otro.elemento == Elemento.TIJERA)
             return Resultado.PIERDE;
-        if (otro.elemento == Elemento.PIEDRA)
-            return Resultado.EMPATE;
-        if (otro.elemento == Elemento.PAPEL)
+
+        if (elemento == Elemento.TIJERA && otro.elemento == Elemento.PIEDRA)
             return Resultado.PIERDE;
-        if (otro.elemento == Elemento.TIJERA)
-            return Resultado.GANA;
 
         return Resultado.GANA;
     }

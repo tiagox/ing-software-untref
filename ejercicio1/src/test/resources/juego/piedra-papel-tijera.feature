@@ -29,3 +29,8 @@ Feature: Juego Piedra Papel Tijera
     Given jugadorUno juega PAPEL
     When jugadorDos juega PAPEL
     Then hay empate
+
+  Scenario: TIJERA vs PIEDRA
+    Given jugadorUno juega TIJERA
+    When jugadorDos juega PIEDRA
+    Then gana jugadorDos
