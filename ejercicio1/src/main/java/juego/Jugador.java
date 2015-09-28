@@ -28,6 +28,8 @@ public class Jugador {
             return Resultado.PIERDE;
         if (elemento == Elemento.TIJERA && otro.elemento == Elemento.PAPEL)
             return Resultado.GANA;
+        if (elemento == Elemento.TIJERA && otro.elemento == Elemento.TIJERA)
+            return Resultado.EMPATE;
 
         return null;
     }
