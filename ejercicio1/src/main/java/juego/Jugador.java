@@ -2,14 +2,14 @@ package juego;
 
 public class Jugador {
 
-    Forma forma;
+    Elemento elemento;
 
-    public Jugador(Forma forma) {
-        this.forma = forma;
+    public Jugador(Elemento elemento) {
+        this.elemento = elemento;
     }
 
     public Resultado juegaContra(Jugador otro){
-        if (otro.forma == Forma.PAPEL) {
+        if (otro.elemento == Elemento.PAPEL) {
             return Resultado.PIERDE;
         } else {
             return Resultado.GANA;

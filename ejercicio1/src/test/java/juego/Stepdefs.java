@@ -12,17 +12,17 @@ public class Stepdefs {
 
     @Given("^jugadorUno juega PIEDRA$")
     public void jugadorUno_juega_piedra() {
-        jugadorUno = new Jugador(Forma.PIEDRA);
+        jugadorUno = new Jugador(Elemento.PIEDRA);
     }
 
     @When("^jugadorDos juega PAPEL$")
     public void jugadorDos_juega_papel() {
-        jugadorDos = new Jugador(Forma.PAPEL);
+        jugadorDos = new Jugador(Elemento.PAPEL);
     }
 
     @When("^jugadorDos juega TIJERA$")
     public void jugadordos_juega_tijera() {
-        jugadorDos = new Jugador(Forma.TIJERA);
+        jugadorDos = new Jugador(Elemento.TIJERA);
     }
 
     @Then("^gana jugadorDos$")

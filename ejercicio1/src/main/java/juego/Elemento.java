@@ -1,5 +1,5 @@
 package juego;
 
-public enum Forma {
+public enum Elemento {
     PIEDRA, PAPEL, TIJERA
 }
