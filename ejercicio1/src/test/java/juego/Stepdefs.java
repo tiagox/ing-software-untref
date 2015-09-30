@@ -12,32 +12,32 @@ public class Stepdefs {
 
     @Given("^jugadorUno juega PIEDRA$")
     public void jugadorUno_juega_piedra() {
-        jugadorUno = new Jugador(Elemento.PIEDRA);
+        jugadorUno = new Jugador(Forma.PIEDRA);
     }
 
     @Given("^jugadorUno juega PAPEL$")
     public void jugadorUno_juega_papel() {
-        jugadorUno = new Jugador(Elemento.PAPEL);
+        jugadorUno = new Jugador(Forma.PAPEL);
     }
 
     @Given("^jugadorUno juega TIJERA$")
     public void jugadorUno_juega_tijera() {
-        jugadorUno = new Jugador(Elemento.TIJERA);
+        jugadorUno = new Jugador(Forma.TIJERA);
     }
 
     @When("^jugadorDos juega PIEDRA$")
     public void jugadorDos_juega_piedra() {
-        jugadorDos = new Jugador(Elemento.PIEDRA);
+        jugadorDos = new Jugador(Forma.PIEDRA);
     }
 
     @When("^jugadorDos juega PAPEL$")
     public void jugadorDos_juega_papel() {
-        jugadorDos = new Jugador(Elemento.PAPEL);
+        jugadorDos = new Jugador(Forma.PAPEL);
     }
 
     @When("^jugadorDos juega TIJERA$")
     public void jugadorDos_juega_tijera() {
-        jugadorDos = new Jugador(Elemento.TIJERA);
+        jugadorDos = new Jugador(Forma.TIJERA);
     }
 
     @Then("^gana jugadorUno$")

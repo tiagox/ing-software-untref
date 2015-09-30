@@ -2,31 +2,31 @@ package juego;
 
 public class Jugador {
 
-    Elemento elemento;
+    private Forma forma;
 
-    public Jugador(Elemento elemento) {
-        this.elemento = elemento;
+    public Jugador(Forma forma) {
+        this.forma = forma;
     }
 
     public Resultado juegaContra(Jugador otro){
 
-        if (elemento == otro.elemento)
+        if (forma == otro.forma)
             return Resultado.EMPATE;
 
-        if (elemento == Elemento.PIEDRA)
-            if (otro.elemento == Elemento.PAPEL)
+        if (forma == Forma.PIEDRA)
+            if (otro.forma == Forma.PAPEL)
                 return Resultado.PIERDE;
             else
                 return Resultado.GANA;
 
-        if (elemento == Elemento.PAPEL)
-            if (otro.elemento == Elemento.PIEDRA)
+        if (forma == Forma.PAPEL)
+            if (otro.forma == Forma.PIEDRA)
                 return Resultado.GANA;
             else
                 return Resultado.PIERDE;
 
-        if (elemento == Elemento.TIJERA)
-            if (otro.elemento == Elemento.PIEDRA)
+        if (forma == Forma.TIJERA)
+            if (otro.forma == Forma.PIEDRA)
                 return Resultado.PIERDE;
             else
                 return Resultado.GANA;
