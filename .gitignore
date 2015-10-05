@@ -1,5 +1,8 @@
 *.iml
 *.sublime-*
 .idea
+.classpath
+.settings
+.project
 lib
 target
