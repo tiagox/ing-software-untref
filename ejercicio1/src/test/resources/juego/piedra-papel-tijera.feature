@@ -44,3 +44,23 @@ Feature: Juego Piedra Papel Tijera
     Given jugadorUno juega TIJERA
     When jugadorDos juega TIJERA
     Then hay empate
+
+  """
+  Otra forma de plantear escenarios es usando tablas con escenarios como layout.
+  """
+  Scenario Outline: jugadorUno vs jugadorDos
+    Given jugadorUno juega <elementoUno>
+    When jugadorDos juega <elementoDos>
+    Then <resultado>
+
+    Examples:
+      | elementoUno | elementoDos | resultado       |
+      | PIEDRA      | PAPEL       | gana jugadorDos |
+      | PIEDRA      | TIJERA      | gana jugadorUno |
+      | PIEDRA      | PIEDRA      | hay empate      |
+      | PAPEL       | PIEDRA      | gana jugadorUno |
+      | PAPEL       | TIJERA      | gana jugadorDos |
+      | PAPEL       | PAPEL       | hay empate      |
+      | TIJERA      | PIEDRA      | gana jugadorDos |
+      | TIJERA      | PAPEL       | gana jugadorUno |
+      | TIJERA      | TIJERA      | hay empate      |
