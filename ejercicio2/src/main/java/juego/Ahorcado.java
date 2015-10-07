@@ -36,7 +36,13 @@ public class Ahorcado {
 	}
 
 	public String getEstado() {
-		return (vidas > 0) ? "en juego" : "ahorcado";
+		if (!getResultado().contains("*")) {
+			return "ganador";
+		} else if (vidas > 0) {
+			return "en juego";
+		} else {
+			return "ahorcado";
+		}
 	}
 
 }
