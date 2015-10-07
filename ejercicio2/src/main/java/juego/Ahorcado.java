@@ -23,7 +23,8 @@ public class Ahorcado {
 	public void arriesgar(char letra) {
 		resultado = "";
 		for (int i = 0; i < palabraSecreta.length(); i++) {
-			resultado += (letra == palabraSecreta.charAt(i)) ? palabraSecreta.charAt(i) : '*';
+			resultado += (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i)))
+					? palabraSecreta.charAt(i) : '*';
 		}
 	}
 
