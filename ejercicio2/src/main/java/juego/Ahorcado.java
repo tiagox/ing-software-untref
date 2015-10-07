@@ -1,15 +1,20 @@
 package juego;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ahorcado {
 
 	String palabraSecreta;
 	char[] resultado;
 	int vidas;
+	List<Character> letrasArriesgadas;
 
 	public Ahorcado(String palabraSecreta, int vidas) {
 		this.palabraSecreta = palabraSecreta;
 		this.resultado = palabraSecreta.replaceAll(".", "*").toCharArray();
 		this.vidas = vidas;
+		this.letrasArriesgadas = new ArrayList<>();
 	}
 
 	public String getResultado() {
@@ -21,18 +26,24 @@ public class Ahorcado {
 	}
 
 	public void arriesgar(char letra) {
-		boolean acerto = false;
-
-		for (int i = 0; i < palabraSecreta.length(); i++) {
-			if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
-				resultado[i] = palabraSecreta.charAt(i);
-				acerto = true;
+		
+		if (!letrasArriesgadas.contains(letra)) {
+			boolean acerto = false;
+			
+			for (int i = 0; i < palabraSecreta.length(); i++) {
+				if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
+					resultado[i] = palabraSecreta.charAt(i);
+					acerto = true;
+				}
+			}
+			
+			if (!acerto) {
+				vidas--;
 			}
 		}
 
-		if (!acerto) {
-			vidas--;
-		}
+		letrasArriesgadas.add(letra);
+
 	}
 
 	public String getEstado() {
