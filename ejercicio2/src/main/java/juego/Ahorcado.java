@@ -21,10 +21,20 @@ public class Ahorcado {
 	}
 
 	public void arriesgar(char letra) {
+		boolean acerto = false;
+
 		resultado = "";
 		for (int i = 0; i < palabraSecreta.length(); i++) {
-			resultado += (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i)))
-					? palabraSecreta.charAt(i) : '*';
+			if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
+				resultado += palabraSecreta.charAt(i);
+				acerto = true;
+			} else {
+				resultado += '*';
+			}
+		}
+
+		if (!acerto) {
+			vidas--;
 		}
 	}
 
