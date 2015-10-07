@@ -9,10 +9,13 @@ public class Stepdefs {
 
 	Ahorcado ahorcado;
 
-	@Given("^la palabra secreta es \"(.*?)\", tengo (\\d+) vidas y el estado actual es \"(.*?)\"$")
-	public void la_palabra_secreta_es_tengo_vidas_y_el_estado_actual_es(String palabraSecreta, int vidas,
-			String estado) {
+	@Given("^la palabra secreta es \"(.*?)\" y tengo (\\d+) vidas$")
+	public void la_palabra_secreta_es_tengo_vidas_y_el_estado_actual_es(String palabraSecreta, int vidas) {
 		ahorcado = new Ahorcado(palabraSecreta, vidas);
+	}
+
+	@Given("^el estado inicial es \"(.*?)\"$")
+	public void el_estado_inicial_es(String estado) {
 	}
 
 	@When("^arriesgo la letra '(.)'$")
