@@ -3,17 +3,17 @@ package juego;
 public class Ahorcado {
 
 	String palabraSecreta;
-	String resultado;
+	char[] resultado;
 	int vidas;
 
 	public Ahorcado(String palabraSecreta, int vidas) {
 		this.palabraSecreta = palabraSecreta;
-		this.resultado = palabraSecreta.replaceAll(".", "*");
+		this.resultado = palabraSecreta.replaceAll(".", "*").toCharArray();
 		this.vidas = vidas;
 	}
 
-	public String getEstado() {
-		return resultado;
+	public String getResultado() {
+		return new String(resultado);
 	}
 
 	public int getVidas() {
@@ -23,13 +23,10 @@ public class Ahorcado {
 	public void arriesgar(char letra) {
 		boolean acerto = false;
 
-		resultado = "";
 		for (int i = 0; i < palabraSecreta.length(); i++) {
 			if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
-				resultado += palabraSecreta.charAt(i);
+				resultado[i] = palabraSecreta.charAt(i);
 				acerto = true;
-			} else {
-				resultado += '*';
 			}
 		}
 
@@ -38,8 +35,8 @@ public class Ahorcado {
 		}
 	}
 
-	public String getResultado() {
-		return "ahorcado";
+	public String getEstado() {
+		return (vidas > 0) ? "en juego" : "ahorcado";
 	}
 
 }

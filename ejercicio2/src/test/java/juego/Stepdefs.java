@@ -10,12 +10,17 @@ public class Stepdefs {
 	Ahorcado ahorcado;
 
 	@Given("^la palabra secreta es \"(.*?)\" y tengo (\\d+) vidas$")
-	public void la_palabra_secreta_es_tengo_vidas_y_el_estado_actual_es(String palabraSecreta, int vidas) {
+	public void la_palabra_secreta_es_y_tengo_vidas(String palabraSecreta, int vidas) {
 		ahorcado = new Ahorcado(palabraSecreta, vidas);
 	}
 
-	@Given("^el estado inicial es \"(.*?)\"$")
-	public void el_estado_inicial_es(String estado) {
+	@Given("^el resultado inicial es \"(.*?)\"$")
+	public void el_resultado_inicial_es(String resultado) {
+		for (char letra : resultado.toCharArray()) {
+			if (letra != '*') {
+				ahorcado.arriesgar(letra);
+			}
+		}
 	}
 
 	@When("^arriesgo la letra '(.)'$")
@@ -23,9 +28,9 @@ public class Stepdefs {
 		ahorcado.arriesgar(letra);
 	}
 
-	@Then("^el estado actual es \"(.*?)\"$")
-	public void el_estado_actual_es(String estado) {
-		Assert.assertEquals(estado, ahorcado.getEstado());
+	@Then("^el resultado actual es \"(.*?)\"$")
+	public void el_resultado_actual_es(String resultado) {
+		Assert.assertEquals(resultado, ahorcado.getResultado());
 	}
 
 	@Then("^me quedan (\\d+) vidas$")
@@ -33,9 +38,9 @@ public class Stepdefs {
 		Assert.assertEquals(vidas, ahorcado.getVidas());
 	}
 
-	@Then("^el resultado es \"(.*?)\"$")
-	public void el_resultado_es(String resultado) {
-		Assert.assertEquals(resultado, ahorcado.getResultado());
+	@Then("^el estado es \"(.*?)\"$")
+	public void el_estado_es(String estado) {
+		Assert.assertEquals(estado, ahorcado.getEstado());
 	}
 
 }
