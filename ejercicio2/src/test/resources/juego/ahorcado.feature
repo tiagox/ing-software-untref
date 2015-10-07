@@ -39,3 +39,11 @@ Feature: Ahorcado
     Then el resultado actual es "a*to"
     And me quedan 7 vidas
     And el estado es "en juego"
+
+  Scenario: Arriesgo una letra acierto y está mas de una vez
+    Given la palabra secreta es "ALABAMA" y tengo 7 vidas
+    And el resultado inicial es "*******"
+    When arriesgo la letra 'a'
+    Then el resultado actual es "A*A*A*A"
+    And me quedan 7 vidas
+    And el estado es "en juego"
