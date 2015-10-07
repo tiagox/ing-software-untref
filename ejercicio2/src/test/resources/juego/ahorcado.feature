@@ -20,3 +20,11 @@ Feature: Ahorcado
     When arriesgo la letra 'x'
     Then el estado actual es "****"
     And me quedan 6 vidas
+
+  Scenario: Arriesgo una letra, no acierto y pierdo porque no me quedaban más vidas
+    Given la palabra secreta es "auto" y tengo 1 vidas
+    And el estado inicial es "****"
+    When arriesgo la letra 'x'
+    Then el estado actual es "****"
+    And me quedan 0 vidas
+    And el resultado es "ahorcado"

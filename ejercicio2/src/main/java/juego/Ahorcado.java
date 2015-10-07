@@ -38,4 +38,8 @@ public class Ahorcado {
 		}
 	}
 
+	public String getResultado() {
+		return "ahorcado";
+	}
+
 }

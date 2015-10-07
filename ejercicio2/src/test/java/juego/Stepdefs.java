@@ -33,4 +33,9 @@ public class Stepdefs {
 		Assert.assertEquals(vidas, ahorcado.getVidas());
 	}
 
+	@Then("^el resultado es \"(.*?)\"$")
+	public void el_resultado_es(String resultado) {
+		Assert.assertEquals(resultado, ahorcado.getResultado());
+	}
+
 }
