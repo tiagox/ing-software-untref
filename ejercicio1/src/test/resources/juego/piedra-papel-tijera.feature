@@ -45,9 +45,7 @@ Feature: Juego Piedra Papel Tijera
     When jugadorDos juega TIJERA
     Then hay empate
 
-  """
-  Otra forma de plantear escenarios es usando tablas con escenarios como layout.
-  """
+  # Otra forma de plantear escenarios es usando tablas con escenarios como layout.
   Scenario Outline: jugadorUno vs jugadorDos
     Given jugadorUno juega <elementoUno>
     When jugadorDos juega <elementoDos>
