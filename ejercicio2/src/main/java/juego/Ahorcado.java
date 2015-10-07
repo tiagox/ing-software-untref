@@ -26,24 +26,23 @@ public class Ahorcado {
 	}
 
 	public void arriesgar(char letra) {
-		
-		if (!letrasArriesgadas.contains(letra)) {
-			boolean acerto = false;
-			
-			for (int i = 0; i < palabraSecreta.length(); i++) {
-				if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
-					resultado[i] = palabraSecreta.charAt(i);
-					acerto = true;
-				}
-			}
-			
-			if (!acerto) {
-				vidas--;
-			}
+		if (!letrasArriesgadas.contains(letra) && !reemplazarLetraEnPalabraSecreta(letra) && getEstado() != "ganador") {
+			vidas--;
 		}
 
 		letrasArriesgadas.add(letra);
+	}
 
+	private boolean reemplazarLetraEnPalabraSecreta(char letra) {
+		boolean acerto = false;
+
+		for (int i = 0; i < palabraSecreta.length(); i++) {
+			if (Character.toLowerCase(letra) == Character.toLowerCase(palabraSecreta.charAt(i))) {
+				resultado[i] = palabraSecreta.charAt(i);
+				acerto = true;
+			}
+		}
+		return acerto;
 	}
 
 	public String getEstado() {
