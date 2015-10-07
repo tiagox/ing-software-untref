@@ -72,3 +72,12 @@ Feature: Ahorcado
     Then el resultado actual es "auto"
     And me quedan 5 vidas
     And el estado es "ganador"
+
+  Scenario: Ya perdí, arriesgo una letra no acierto pero no pasa nada ya que el juego terminó
+    Given la palabra secreta es "auto" y tengo 1 vidas
+    And el resultado inicial es "a*to"
+    And arriesgo la letra 'y'
+    When arriesgo la letra 'x'
+    Then el resultado actual es "a*to"
+    And me quedan 0 vidas
+    And el estado es "ahorcado"

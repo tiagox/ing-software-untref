@@ -26,7 +26,8 @@ public class Ahorcado {
 	}
 
 	public void arriesgar(char letra) {
-		if (!letrasArriesgadas.contains(letra) && !reemplazarLetraEnPalabraSecreta(letra) && getEstado() != "ganador") {
+		if (!letrasArriesgadas.contains(letra) && !reemplazarLetraEnPalabraSecreta(letra)
+				&& getEstado() == "en juego") {
 			vidas--;
 		}
 
@@ -42,6 +43,7 @@ public class Ahorcado {
 				acerto = true;
 			}
 		}
+		
 		return acerto;
 	}
 
