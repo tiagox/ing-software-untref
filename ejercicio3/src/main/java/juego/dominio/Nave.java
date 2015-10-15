@@ -1,11 +1,15 @@
 package juego.dominio;
 
-public enum Nave {
-	LANCHA(1), ACORAZADO(2), DESTRUCTOR(3);
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public abstract class Nave {
 
 	private final int casilleros;
+	private Map<Coordenada, EstadoPosicion> posiciones;
 
-	private Nave(int casilleros) {
+	public Nave(int casilleros) {
 		this.casilleros = casilleros;
 	}
 
@@ -13,16 +17,38 @@ public enum Nave {
 		return casilleros;
 	}
 
+	public void setPosiciones(List<Coordenada> posiciones) {
+		this.posiciones = new HashMap<Coordenada, EstadoPosicion>();
+
+		for (Coordenada coordenada : posiciones) {
+			this.posiciones.put(coordenada, EstadoPosicion.INTACTA);
+		}
+	}
+
+	public void atacarPosicion(Coordenada coordenada) {
+		posiciones.put(coordenada, EstadoPosicion.TOCADA);
+	}
+
+	public EstadoNave getEstado() {
+		if (!posiciones.containsValue(EstadoPosicion.INTACTA)) {
+			return EstadoNave.HUNDIDA;
+		} else if (posiciones.containsValue(EstadoPosicion.TOCADA)) {
+			return EstadoNave.AVERIADA;
+		} else {
+			return EstadoNave.INTACTA;
+		}
+	}
+
 	public static Nave crear(String tipo) {
 		switch (tipo) {
 		case "lancha":
-			return Nave.LANCHA;
+			return new Lancha();
 		case "acorazado":
-			return Nave.ACORAZADO;
+			return new Acorazado();
 		case "destructor":
-			return Nave.DESTRUCTOR;
+			return new Destructor();
 		default:
-			return null;
+			throw new TipoNaveNoEncontradoException();
 		}
 	}
 
