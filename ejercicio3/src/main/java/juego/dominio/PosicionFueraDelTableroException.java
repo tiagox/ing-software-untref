@@ -1,6 +1,6 @@
 package juego.dominio;
 
-public class CoordenadaInvalidaException extends RuntimeException {
+public class PosicionFueraDelTableroException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

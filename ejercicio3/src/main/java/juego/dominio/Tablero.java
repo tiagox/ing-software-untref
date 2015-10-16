@@ -44,7 +44,7 @@ public class Tablero {
 	private boolean validarCoordenadasDisponibles(List<Coordenada> coordenadas) {
 		for (Coordenada coordenada : coordenadas) {
 			if (coordenadaFueraDelTablero(coordenada)) {
-				throw new CoordenadaInvalidaException();
+				throw new PosicionFueraDelTableroException();
 			}
 			if (casilleros.containsKey(coordenada)) {
 				return false;

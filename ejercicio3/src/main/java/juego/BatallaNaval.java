@@ -2,6 +2,7 @@ package juego;
 
 import juego.dominio.Coordenada;
 import juego.dominio.Nave;
+import juego.dominio.PosicionFueraDelTableroException;
 import juego.dominio.Tablero;
 
 public class BatallaNaval {
