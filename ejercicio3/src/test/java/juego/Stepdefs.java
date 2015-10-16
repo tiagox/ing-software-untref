@@ -16,6 +16,11 @@ public class Stepdefs {
 		batallaNaval = new BatallaNaval();
 	}
 
+	@Given("^un barco ocupando la posicion \\(\"(.)\", (\\d+)\\)$")
+	public void un_barco_ocupando_la_posicion(char fila, int columna) {
+		batallaNaval.posicionarBarco("lancha", fila, columna, "horizontal");
+	}
+
 	@When("^un jugador posiciona un barco de tipo \"(.*?)\" en la posicion \\(\"(.)\", (\\d+)\\) en dirección \"(.*?)\"$")
 	public void un_jugador_posiciona_un_barco_de_tipo_en_la_posicion_en_dirección(String tipo, char fila, int columna,
 			String direccion) {
@@ -27,14 +32,14 @@ public class Stepdefs {
 		Assert.assertEquals("nave posicionada correctamente", resultado);
 	}
 
-	@Given("^un barco ocupando la posicion \\(\"(.)\", (\\d+)\\)$")
-	public void un_barco_ocupando_la_posicion(char fila, int columna) {
-		batallaNaval.posicionarBarco("lancha", fila, columna, "horizontal");
+	@Then("^la operación no se realiza por posicionar una nave en posiciones ocupadas$")
+	public void la_operación_no_se_realiza_por_posicionar_una_nave_en_posiciones_ocupadas() {
+		Assert.assertEquals("no es posible posicionar naves en posiciones ocupadas", resultado);
 	}
 
-	@Then("^la operación no se realiza por posiciones ocupadas$")
-	public void la_operación_no_se_realiza_por_posiciones_ocupadas() {
-		Assert.assertEquals("nave no posionada por lugares ocupados", resultado);
+	@Then("^la operación no se realiza por posicionar una nave fuera del tablero$")
+	public void la_operación_no_se_realiza_por_posicionar_una_nave_fuera_del_tablero() {
+		Assert.assertEquals("no es posible posicionar naves fuera del tablero", resultado);
 	}
 
 }

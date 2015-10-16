@@ -14,12 +14,15 @@ public class BatallaNaval {
 	}
 
 	public String posicionarBarco(String tipo, char fila, int columna, String direccion) {
-		if (tablero.asignarCoordenada(new Coordenada(fila, columna), Nave.crear(tipo), direccion)) {
-			return "nave posicionada correctamente";
-		} else {
-			return "nave no posionada por lugares ocupados";
+		try {
+			if (tablero.asignarCoordenada(new Coordenada(fila, columna), Nave.crear(tipo), direccion)) {
+				return "nave posicionada correctamente";
+			} else {
+				return "no es posible posicionar naves en posiciones ocupadas";
+			}
+		} catch (PosicionFueraDelTableroException e) {
+			return "no es posible posicionar naves fuera del tablero";
 		}
-
 	}
 
 }
