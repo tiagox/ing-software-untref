@@ -15,3 +15,8 @@ Feature: Batalla Naval
     Given un tablero de batalla naval
     When un jugador posiciona un barco de tipo "acorazado" en la posicion ("J", 7) en dirección "vertical"
     Then la operación no se realiza por posicionar una nave fuera del tablero
+
+  Scenario: Disparo y toco agua
+    Given un tablero de batalla naval
+    When ataco la posicion ("F", 8)
+    Then el disparo resulta en "agua"

@@ -37,6 +37,16 @@ public class TableroTest {
 		Assert.assertFalse(resultado);
 
 	}
+	
+	@Test
+	public void atacarUnaPosicionDeUnTableroVacioDeberiaResultarEnAgua() {
+		Tablero tablero = new Tablero();
+		
+		Coordenada coordenada = new Coordenada('C', 5);
 
+		ResultadoAtaque resultado = tablero.atacarPosicion(coordenada); 
+
+		Assert.assertEquals(ResultadoAtaque.AGUA, resultado);
+	}
 
 }

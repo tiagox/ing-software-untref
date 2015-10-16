@@ -59,4 +59,8 @@ public class Tablero {
 				|| (coordenada.getColumna() < minimaColumna || coordenada.getColumna() > maximaColumna);
 	}
 
+	public ResultadoAtaque atacarPosicion(Coordenada coordenada) {
+		return ResultadoAtaque.AGUA;
+	}
+
 }

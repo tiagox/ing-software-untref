@@ -3,6 +3,7 @@ package juego;
 import juego.dominio.Coordenada;
 import juego.dominio.Nave;
 import juego.dominio.PosicionFueraDelTableroException;
+import juego.dominio.ResultadoAtaque;
 import juego.dominio.Tablero;
 
 public class BatallaNaval {
@@ -23,6 +24,13 @@ public class BatallaNaval {
 		} catch (PosicionFueraDelTableroException e) {
 			return "no es posible posicionar naves fuera del tablero";
 		}
+	}
+
+	public String atacar(char fila, int columna) {
+		if (tablero.atacarPosicion(new Coordenada(fila, columna)) == ResultadoAtaque.AGUA) {
+			return "agua";
+		}
+		return null;
 	}
 
 }

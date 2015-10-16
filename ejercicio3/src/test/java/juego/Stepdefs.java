@@ -42,4 +42,14 @@ public class Stepdefs {
 		Assert.assertEquals("no es posible posicionar naves fuera del tablero", resultado);
 	}
 
+	@When("^ataco la posicion \\(\"(.)\", (\\d+)\\)$")
+	public void ataco_la_posicion_F(char fila, int columna) {
+		resultado = batallaNaval.atacar(fila, columna);
+	}
+
+	@Then("^el disparo resulta en \"(.*?)\"$")
+	public void el_disparo_resulta_en(String resultado) {
+		Assert.assertEquals(resultado, this.resultado);
+	}
+
 }
