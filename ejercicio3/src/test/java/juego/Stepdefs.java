@@ -27,4 +27,14 @@ public class Stepdefs {
 		Assert.assertEquals("nave posicionada correctamente", resultado);
 	}
 
+	@Given("^un barco ocupando la posicion \\(\"(.)\", (\\d+)\\)$")
+	public void un_barco_ocupando_la_posicion(char fila, int columna) {
+		batallaNaval.posicionarBarco("lancha", fila, columna, "horizontal");
+	}
+
+	@Then("^la operación no se realiza por posiciones ocupadas$")
+	public void la_operación_no_se_realiza_por_posiciones_ocupadas() {
+		Assert.assertEquals("nave no posionada por lugares ocupados", resultado);
+	}
+
 }

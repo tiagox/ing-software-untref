@@ -13,10 +13,10 @@ public class BatallaNaval {
 	}
 
 	public String posicionarBarco(String tipo, char fila, int columna, String direccion) {
-		if (tablero.asignarCoordenada(new Coordenada(fila, columna), Nave.crear(tipo))) {
+		if (tablero.asignarCoordenada(new Coordenada(fila, columna), Nave.crear(tipo), direccion)) {
 			return "nave posicionada correctamente";
 		} else {
-			return null;
+			return "nave no posionada por lugares ocupados";
 		}
 
 	}
