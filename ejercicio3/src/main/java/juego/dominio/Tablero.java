@@ -14,28 +14,25 @@ public class Tablero {
 
 	private Map<Coordenada, Nave> casilleros = new HashMap<>();
 
-	public boolean asignarCoordenada(Coordenada coordenada, Nave nave, String direccion) {
+	public boolean asignarCoordenada(Coordenada coordenada, Nave nave, Direccion direccion) {
 		List<Coordenada> coordenadasRequeridas = getListaDeCoordenadas(coordenada, nave, direccion);
 
 		if (validarCoordenadasDisponibles(coordenadasRequeridas)) {
 			casilleros.put(coordenada, nave);
+
 			return true;
 		}
 
 		return false;
 	}
 
-	private List<Coordenada> getListaDeCoordenadas(Coordenada coordenada, Nave nave, String direccion) {
+	private List<Coordenada> getListaDeCoordenadas(Coordenada coordenada, Nave nave, Direccion direccion) {
 		List<Coordenada> coordenadas = new ArrayList<Coordenada>();
 		Coordenada posicion = coordenada;
 
 		for (int i = 0; i < nave.getCasilleros(); i++) {
 			coordenadas.add(posicion);
-			if (direccion == "horizontal") {
-				posicion = posicion.getSiguienteHorizontal();
-			} else {
-				posicion = posicion.getSiguienteVertical();
-			}
+			posicion = posicion.getSiguiente(direccion);
 		}
 
 		return coordenadas;

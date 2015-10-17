@@ -11,12 +11,11 @@ public class TableroTest {
 
 		Coordenada coordenada = new Coordenada('C', 5);
 		Nave lancha = Nave.crear("lancha");
-		String direccion = "horizontal";
+		Direccion direccion = Direccion.HORIZONTAL;
 
 		boolean resultado = tablero.asignarCoordenada(coordenada, lancha, direccion);
 
 		Assert.assertTrue(resultado);
-
 	}
 
 	@Test
@@ -25,26 +24,27 @@ public class TableroTest {
 
 		Coordenada coordenada = new Coordenada('C', 5);
 		Nave lancha = Nave.crear("lancha");
-		String direccion = "horizontal";
-		
+		Direccion direccion = Direccion.HORIZONTAL;
+
 		tablero.asignarCoordenada(coordenada, lancha, direccion);
-		
+
 		Nave acorazado = Nave.crear("acorazado");
 		Coordenada posicionAcorazado = new Coordenada('C', 4);
 
 		boolean resultado = tablero.asignarCoordenada(posicionAcorazado, acorazado, direccion); 
 
 		Assert.assertFalse(resultado);
+	}
 
 	}
-	
+
 	@Test
 	public void atacarUnaPosicionDeUnTableroVacioDeberiaResultarEnAgua() {
 		Tablero tablero = new Tablero();
-		
+
 		Coordenada coordenada = new Coordenada('C', 5);
 
-		ResultadoAtaque resultado = tablero.atacarPosicion(coordenada); 
+		ResultadoAtaque resultado = tablero.atacarPosicion(coordenada);
 
 		Assert.assertEquals(ResultadoAtaque.AGUA, resultado);
 	}
