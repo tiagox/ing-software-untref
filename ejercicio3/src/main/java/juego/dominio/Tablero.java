@@ -14,11 +14,11 @@ public class Tablero {
 
 	private Map<Coordenada, Nave> casilleros = new HashMap<>();
 
-	public boolean asignarCoordenada(Coordenada coordenada, Nave nave, Direccion direccion) {
+	public boolean posicionarNave(Coordenada coordenada, Nave nave, Direccion direccion) {
 		List<Coordenada> coordenadasRequeridas = getListaDeCoordenadas(coordenada, nave, direccion);
 
 		if (validarCoordenadasDisponibles(coordenadasRequeridas)) {
-			casilleros.put(coordenada, nave);
+			asignarCoordenadasRequeridas(coordenadasRequeridas, nave);
 
 			return true;
 		}
@@ -56,8 +56,18 @@ public class Tablero {
 				|| (coordenada.getColumna() < minimaColumna || coordenada.getColumna() > maximaColumna);
 	}
 
+	private void asignarCoordenadasRequeridas(List<Coordenada> coordenadasRequeridas, Nave nave) {
+		for (Coordenada coordenadaRequerida : coordenadasRequeridas) {
+			casilleros.put(coordenadaRequerida, nave);
+		}
+	}
+
 	public ResultadoAtaque atacarPosicion(Coordenada coordenada) {
-		return ResultadoAtaque.AGUA;
+		if (casilleros.containsKey(coordenada)) {
+			return ResultadoAtaque.TOCADO;
+		} else {
+			return ResultadoAtaque.AGUA;
+		}
 	}
 
 }

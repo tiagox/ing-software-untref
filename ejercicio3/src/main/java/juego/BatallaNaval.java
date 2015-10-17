@@ -15,9 +15,9 @@ public class BatallaNaval {
 		tablero = new Tablero();
 	}
 
-	public String posicionarBarco(String tipo, char fila, int columna, String direccion) {
+	public String posicionarNave(String tipo, char fila, int columna, String direccion) {
 		try {
-			if (tablero.asignarCoordenada(new Coordenada(fila, columna), Nave.crear(tipo), Direccion.crear(direccion))) {
+			if (tablero.posicionarNave(new Coordenada(fila, columna), Nave.crear(tipo), Direccion.crear(direccion))) {
 				return "nave posicionada correctamente";
 			} else {
 				return "no es posible posicionar naves en posiciones ocupadas";
@@ -27,11 +27,10 @@ public class BatallaNaval {
 		}
 	}
 
-	public String atacar(char fila, int columna) {
-		if (tablero.atacarPosicion(new Coordenada(fila, columna)) == ResultadoAtaque.AGUA) {
-			return "agua";
-		}
-		return null;
+	public String atacarPosicion(char fila, int columna) {
+		ResultadoAtaque resultado = tablero.atacarPosicion(new Coordenada(fila, columna));
+
+		return resultado.toString().toLowerCase();
 	}
 
 }

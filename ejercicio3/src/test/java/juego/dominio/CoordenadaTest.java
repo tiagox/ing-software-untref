@@ -11,9 +11,8 @@ public class CoordenadaTest {
 		int columna = 5;
 		Coordenada coordenada = new Coordenada(fila, columna);
 
-		Coordenada otraCoordenada = new Coordenada(fila, columna);
-
-		Assert.assertEquals(coordenada, otraCoordenada);
+		Assert.assertEquals(coordenada, new Coordenada(fila, columna));
+		Assert.assertEquals(coordenada, coordenada);
 	}
 
 	@Test

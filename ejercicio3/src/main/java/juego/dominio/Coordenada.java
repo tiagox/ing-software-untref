@@ -10,6 +10,30 @@ public class Coordenada {
 		this.columna = columna;
 	}
 
+	public char getFila() {
+		return fila;
+	}
+
+	public int getColumna() {
+		return columna;
+	}
+
+	public Coordenada getSiguiente(Direccion direccion) {
+		if (direccion == Direccion.HORIZONTAL) {
+			return getSiguienteHorizontal();
+		} else {
+			return getSiguienteVertical();
+		}
+	}
+
+	private Coordenada getSiguienteHorizontal() {
+		return new Coordenada(fila, (columna + 1));
+	}
+
+	private Coordenada getSiguienteVertical() {
+		return new Coordenada((char) (fila + 1), columna);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -33,22 +57,6 @@ public class Coordenada {
 		if (fila != other.fila)
 			return false;
 		return true;
-	}
-
-	public char getFila() {
-		return fila;
-	}
-
-	public int getColumna() {
-		return columna;
-	}
-
-	public Coordenada getSiguienteHorizontal() {
-		return new Coordenada(fila, (columna + 1));
-	}
-
-	public Coordenada getSiguienteVertical() {
-		return new Coordenada((char) (fila + 1), columna);
 	}
 
 }

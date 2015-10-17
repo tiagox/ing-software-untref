@@ -18,5 +18,11 @@ Feature: Batalla Naval
 
   Scenario: Disparo y toco agua
     Given un tablero de batalla naval
-    When ataco la posicion ("F", 8)
+    When el jugador ataca la posicion ("F", 8)
     Then el disparo resulta en "agua"
+
+  Scenario: Disparo y toco un barco pero no lo hundo
+    Given un tablero de batalla naval
+    And un jugador posiciona un barco de tipo "destructor" en la posicion ("C", 5) en dirección "horizontal"
+    When el jugador ataca la posicion ("C", 6)
+    Then el disparo resulta en "tocado"

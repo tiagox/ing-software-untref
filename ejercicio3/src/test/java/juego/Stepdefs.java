@@ -18,13 +18,13 @@ public class Stepdefs {
 
 	@Given("^un barco ocupando la posicion \\(\"(.)\", (\\d+)\\)$")
 	public void un_barco_ocupando_la_posicion(char fila, int columna) {
-		batallaNaval.posicionarBarco("lancha", fila, columna, "horizontal");
+		batallaNaval.posicionarNave("lancha", fila, columna, "horizontal");
 	}
 
 	@When("^un jugador posiciona un barco de tipo \"(.*?)\" en la posicion \\(\"(.)\", (\\d+)\\) en dirección \"(.*?)\"$")
 	public void un_jugador_posiciona_un_barco_de_tipo_en_la_posicion_en_dirección(String tipo, char fila, int columna,
 			String direccion) {
-		resultado = batallaNaval.posicionarBarco(tipo, fila, columna, direccion);
+		resultado = batallaNaval.posicionarNave(tipo, fila, columna, direccion);
 	}
 
 	@Then("^la operación se realiza correctamente$")
@@ -42,9 +42,9 @@ public class Stepdefs {
 		Assert.assertEquals("no es posible posicionar naves fuera del tablero", resultado);
 	}
 
-	@When("^ataco la posicion \\(\"(.)\", (\\d+)\\)$")
-	public void ataco_la_posicion_F(char fila, int columna) {
-		resultado = batallaNaval.atacar(fila, columna);
+	@When("^el jugador ataca la posicion \\(\"(.)\", (\\d+)\\)$")
+	public void el_jugador_ataca_la_posicion(char fila, int columna) {
+		resultado = batallaNaval.atacarPosicion(fila, columna);
 	}
 
 	@Then("^el disparo resulta en \"(.*?)\"$")
