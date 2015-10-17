@@ -40,7 +40,7 @@ public abstract class Nave {
 	}
 
 	public static Nave crear(String tipo) {
-		switch (tipo) {
+		switch (tipo.toLowerCase()) {
 		case "lancha":
 			return new Lancha();
 		case "acorazado":
@@ -48,7 +48,7 @@ public abstract class Nave {
 		case "destructor":
 			return new Destructor();
 		default:
-			throw new TipoNaveNoEncontradoException();
+			throw new TipoNaveInexistenteException();
 		}
 	}
 

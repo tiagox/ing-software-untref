@@ -12,20 +12,10 @@ public class NaveTest {
 	List<Coordenada> posiciones;
 
 	@Test
-	public void deberiaPoderCrearUnaLanchaIndicandoSuTipo() {
-		Assert.assertTrue(Nave.crear("lancha") instanceof Lancha);
-	}
-
-	@Test
 	public void unaLanchaDeberiaOcuparUnCasillero() {
 		Nave lancha = Nave.crear("lancha");
 
 		Assert.assertEquals(1, lancha.getCasilleros());
-	}
-
-	@Test
-	public void deberiaPoderCrearUnAcorazadoIndicandoSuTipo() {
-		Assert.assertTrue(Nave.crear("acorazado") instanceof Acorazado);
 	}
 
 	@Test
@@ -36,18 +26,13 @@ public class NaveTest {
 	}
 
 	@Test
-	public void deberiaPoderCrearUnDestructorIndicandoSuTipo() {
-		Assert.assertTrue(Nave.crear("destructor") instanceof Destructor);
-	}
-
-	@Test
 	public void unDestructorDeberiaOcuparTresCasilleros() {
 		Nave destructor = Nave.crear("destructor");
 
 		Assert.assertEquals(3, destructor.getCasilleros());
 	}
 
-	@Test(expected = TipoNaveNoEncontradoException.class)
+	@Test(expected = TipoNaveInexistenteException.class)
 	public void crearUnaNaveNoExistenteDeberiaLanzarUnaExcepcion() {
 		Nave.crear("avion");
 	}
