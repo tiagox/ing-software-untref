@@ -26,3 +26,11 @@ Feature: Batalla Naval
     And un jugador posiciona un barco de tipo "destructor" en la posicion ("C", 5) en dirección "horizontal"
     When el jugador ataca la posicion ("C", 6)
     Then el disparo resulta en "tocado"
+
+  Scenario: Disparo, toco un barco y lo hundo
+    Given un tablero de batalla naval
+    And un jugador posiciona un barco de tipo "destructor" en la posicion ("C", 5) en dirección "vertical"
+    When el jugador ataca la posicion ("C", 5)
+    And el jugador ataca la posicion ("D", 5)
+    And el jugador ataca la posicion ("E", 5)
+    Then el disparo resulta en "hundido"

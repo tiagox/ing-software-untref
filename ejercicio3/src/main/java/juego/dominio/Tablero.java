@@ -18,6 +18,7 @@ public class Tablero {
 		List<Coordenada> coordenadasRequeridas = getListaDeCoordenadas(coordenada, nave, direccion);
 
 		if (validarCoordenadasDisponibles(coordenadasRequeridas)) {
+			nave.setPosiciones(coordenadasRequeridas);
 			asignarCoordenadasRequeridas(coordenadasRequeridas, nave);
 
 			return true;
@@ -64,9 +65,20 @@ public class Tablero {
 
 	public ResultadoAtaque atacarPosicion(Coordenada coordenada) {
 		if (casilleros.containsKey(coordenada)) {
-			return ResultadoAtaque.TOCADO;
+			return atacarNave(coordenada);
 		} else {
 			return ResultadoAtaque.AGUA;
+		}
+	}
+
+	private ResultadoAtaque atacarNave(Coordenada coordenada) {
+		Nave nave = casilleros.get(coordenada);
+		nave.atacarPosicion(coordenada);
+
+		if (nave.getEstado() == EstadoNave.HUNDIDA) {
+			return ResultadoAtaque.HUNDIDO;
+		} else {
+			return ResultadoAtaque.TOCADO;
 		}
 	}
 

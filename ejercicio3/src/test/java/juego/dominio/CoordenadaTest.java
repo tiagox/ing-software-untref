@@ -16,6 +16,18 @@ public class CoordenadaTest {
 	}
 
 	@Test
+	public void unaCoodenadaDeberiaSerDistintaAOtraSiLasFilasOLasColumnasDifieren() {
+		char fila = 'C', filaDisinta = 'F';
+		int columna = 5, columnaDistinta = 8;
+		Coordenada coordenada = new Coordenada(fila, columna);
+
+		Assert.assertNotEquals(coordenada, new Coordenada(filaDisinta, columna));
+		Assert.assertNotEquals(coordenada, new Coordenada(fila, columnaDistinta));
+		Assert.assertNotEquals(coordenada, "(C, 5)");
+		Assert.assertNotEquals(coordenada, null);
+	}
+
+	@Test
 	public void unaCoordenadaDeberiaSaberDevolverLaSiguienteCoordenadaEnBaseALaDireccionIndicada() {
 		char fila = 'C';
 		int columna = 5;

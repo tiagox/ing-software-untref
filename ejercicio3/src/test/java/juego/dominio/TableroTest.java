@@ -78,4 +78,25 @@ public class TableroTest {
 		Assert.assertEquals(ResultadoAtaque.TOCADO, resultado);
 	}
 
+	@Test
+	public void atacarUnaPosicionDondeHayUnBarcoDeberiaResultarEnHundidoSiEraLaUltimaSana() {
+		Tablero tablero = new Tablero();
+
+		Coordenada coordenada = new Coordenada('C', 5);
+		Nave destructor = Nave.crear("destructor");
+		Direccion direccion = Direccion.HORIZONTAL;
+
+		tablero.posicionarNave(coordenada, destructor, direccion);
+
+		Coordenada coordenadaDeAtaque = new Coordenada('C', 5);
+		tablero.atacarPosicion(coordenadaDeAtaque);
+		coordenadaDeAtaque = new Coordenada('C', 6);
+		tablero.atacarPosicion(coordenadaDeAtaque);
+
+		coordenadaDeAtaque = new Coordenada('C', 7);
+		ResultadoAtaque resultado = tablero.atacarPosicion(coordenadaDeAtaque);
+
+		Assert.assertEquals(ResultadoAtaque.HUNDIDO, resultado);
+	}
+
 }
